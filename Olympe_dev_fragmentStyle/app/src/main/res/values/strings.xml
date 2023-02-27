@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Olympe</string>
+    <string name="profil_taille">Taille :</string>
+    <string name="profil_poids">Poids :</string>
+    <string name="profil_sexe">Sexe :</string>
+    <string name="profil_homme">Homme</string>
+    <string name="profil_femme">Femme</string>
+    <string name="all_button_valider">Valider</string>
+    <string name="all_button_retour">Retour</string>
+    <string name="all_erreurSaisie">Erreur de saisie. Veuillez remplir correctement les champs.</string>
+    <string name="menu_sante">Santé</string>
+    <string name="menu_stats">Statistiques</string>
+    <string name="menu_entrainement">Entraînement</string>
+    <string name="menu_parametres">Paramètres</string>
+</resources>

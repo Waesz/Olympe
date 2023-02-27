@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Olympe</string>
+    <string name="profil_taille">Height :</string>
+    <string name="profil_poids">Weight :</string>
+    <string name="profil_sexe">Gender :</string>
+    <string name="profil_homme">Man</string>
+    <string name="profil_femme">Woman</string>
+    <string name="all_button_valider">Validate</string>
+    <string name="all_button_retour">Back</string>
+    <string name="all_erreurSaisie">Incorrect entry. Please, fill in the form correctly.</string>
+    <string name="menu_sante">Health</string>
+    <string name="menu_stats">Statistics</string>
+    <string name="menu_entrainement">Training</string>
+    <string name="menu_parametres">Parameters</string>
+</resources>

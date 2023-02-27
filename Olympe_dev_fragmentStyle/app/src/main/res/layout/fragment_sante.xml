@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_nombrePasTitle"
+        android:gravity="center"
+        android:text="Nombre pas aujourd'hui : "
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/sante_nombrePasTV"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_distanceTitle"
+        android:gravity="center"
+        android:text="Distance parcouru :"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/sante_distanceTV"
+        android:gravity="center"
+        android:text="0 km"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_caloriesTitle"
+        android:gravity="center"
+        android:text="Calories dépensées :"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/sante_caloriesTV"
+        android:gravity="center"
+        android:text="0 kcal"
+        android:textSize="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_prefET"
+        android:gravity="center"
+        android:hint="shared prefs"
+        android:textSize="30dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_addPrefB"
+        android:layout_gravity="center"
+        android:text="add pref"
+        android:textSize="25dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_readPrefB"
+        android:layout_gravity="center"
+        android:text="read pref"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/sante_prefTV"
+        android:gravity="center"
+        android:text=""
+        android:textSize="30dp"
+        android:textColor="#F00"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sante_swapB"
+        android:layout_gravity="center"
+        android:text="main"
+        android:textSize="25dp"/>
+
+
+
+</LinearLayout>

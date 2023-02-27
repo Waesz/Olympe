@@ -1,0 +1,16 @@
+
+Avant tout il faut ce mettre sur le fichier Olympe avec la commande cd !
+
+
+Comment push son travail ??
+
+git add .
+
+git commit -m "[nom du commit]"
+
+git push -u origin [nom de la branche(main)]
+
+
+COMMENT METTRE à JOUR ??
+
+git pull

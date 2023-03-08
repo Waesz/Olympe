@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -30,7 +29,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             "CREATE TABLE aliments (" +
                     "idAlim INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nomAlim TEXT NOT NULL," +
-                    "pathImageAlim TEXT," +
+                    "image INTEGER," +
                     "calories INTEGER NOT NULL," +
                     "proteines REAL NOT NULL," +
                     "glucides REAL NOT NULL," +
@@ -62,10 +61,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         this.getWritableDatabase().execSQL(insertPerfSQL);
     }
 
-    public void insertAlim(SQLiteDatabase db, String nomAlim, String pathImageAlim, int calories, float proteines, float glucides, float lipides) {
-        String insertAlimSQL = "INSERT INTO aliments (nomAlim, pathImageAlim, calories, proteines, glucides, lipides) VALUES (" +
+    public void insertAlim(SQLiteDatabase db, String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
+        String insertAlimSQL = "INSERT INTO aliments (nomAlim, image, calories, proteines, glucides, lipides) VALUES (" +
                 "'" + nomAlim + "', " +
-                "'" + pathImageAlim + "', " +
+                image + ", " +
                 calories + ", " +
                 proteines + ", " +
                 glucides + ", " +
@@ -83,30 +82,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
         getWritableDatabase().execSQL(CREATE_TABLE_ALIM);
     }
     public void fillDatas(SQLiteDatabase db) {
-        insertAlim(db, context.getResources().getString(R.string.aliment_avocat), "String pathImageAlim", 160, (float) 2, (float) 8.5, (float) 14.66);
-        insertAlim(db, context.getResources().getString(R.string.aliment_banane), "String pathImageAlim", 94, (float) 1.2, (float) 20.5, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_brocoli), "String pathImageAlim", 29, (float) 2.1, (float) 2.8, (float) 0.5);
-        insertAlim(db, context.getResources().getString(R.string.aliment_carotte), "String pathImageAlim", 36, (float) 0.8, (float) 6.6, (float) 0.3);
-        insertAlim(db, context.getResources().getString(R.string.aliment_lentille), "String pathImageAlim", 353, (float) 25.8, (float) 60.1, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_oeuf), "String pathImageAlim", 145, (float) 12.3, (float) 0.7, (float) 10.3);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poisson_cabillaud), "String pathImageAlim", 85, (float) 19, (float) 0, (float) 0.8);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poivron), "String pathImageAlim", 20, (float) 0.9, (float) 4.6, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_pomme), "String pathImageAlim", 53, (float) 0.3, (float) 11.3, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poulet_blanc), "String pathImageAlim", 121, (float) 26.2, (float) 0, (float) 1.8);
+        insertAlim(db, context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
+        insertAlim(db, context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
+        insertAlim(db, context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
+        insertAlim(db, context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
+        insertAlim(db, context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
+        insertAlim(db, context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
+        insertAlim(db, context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
+        insertAlim(db, context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
+        insertAlim(db, context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
+        insertAlim(db, context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
     }
 
     public List<Aliment> getAliments() {
-        Log.d("debug", "getAliments: ");
         List<Aliment> aliments = new ArrayList<>();
         String sqlRequest = "SELECT * FROM aliments";
         Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-             Aliment aliment = new Aliment(cursor.getString(1), cursor.getString(2),
+             Aliment aliment = new Aliment(cursor.getString(1), cursor.getInt(2),
                      cursor.getInt(3), cursor.getFloat(4), cursor.getFloat(5),
                      cursor.getFloat(6));
              aliments.add(aliment);
-            Log.d("debug", "adding Aliment...");
             cursor.moveToNext();
         }
         return  aliments;

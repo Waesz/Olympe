@@ -19,8 +19,7 @@
         android:layout_height="70dp"
         android:layout_below="@+id/view_aliments_nom"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="10dp"
-        android:background="@color/purple_200"/>
+        android:layout_marginEnd="10dp"/>
 
     <TextView
         android:id="@+id/view_aliments_calories"

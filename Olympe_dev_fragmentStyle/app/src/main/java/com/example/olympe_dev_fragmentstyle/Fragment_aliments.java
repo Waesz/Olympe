@@ -29,7 +29,6 @@ public class Fragment_aliments extends Fragment {
         activity = (MainActivity) getActivity();
         aliments = activity.databaseManager.getAliments();
         recyclerView = rootView.findViewById(R.id.aliments_recyclerView);
-        Log.d("debug", "recycler : " + rootView.toString());
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         recyclerView.setAdapter(new AdapterAliments(getContext(), aliments));
 

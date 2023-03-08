@@ -2,7 +2,7 @@ package com.example.olympe_dev_fragmentstyle.utils;
 
 public class Aliment {
     private String nom;
-    private String imagePath;
+    private int image;
     private int calories;
     private float proteines;
     private float glucides;
@@ -12,13 +12,13 @@ public class Aliment {
         return nom;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public int getImage() {
+        return image;
     }
 
-    public Aliment(String nom, String imagePath, int calories, float proteines, float glucides, float lipides) {
+    public Aliment(String nom, int image, int calories, float proteines, float glucides, float lipides) {
         this.nom = nom;
-        this.imagePath = imagePath;
+        this.image = image;
         this.calories = calories;
         this.proteines = proteines;
         this.glucides = glucides;

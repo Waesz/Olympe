@@ -1,9 +1,12 @@
 package com.example.olympe_dev_fragmentstyle;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 
 import com.example.olympe_dev_fragmentstyle.database.DatabaseManager;
@@ -22,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
         changeFragment(new Fragment_Sante());
         barreNavigation = findViewById(R.id.menu_barreNavigation);
         sharedPreferencesManager = new SharedPreferencesManager(this);
-
         databaseManager = new DatabaseManager(this);
-
-        Log.d("debug", "Main Activity: " + databaseManager.getDatabaseName());
-        Log.d("debug", "Number of rows : " + databaseManager.getAlimentsRows());
-
+        databaseManager.clearTableAlim();
+        databaseManager.fillDatas(databaseManager.getWritableDatabase());
+        Log.d("debug", "number of rows : " + databaseManager.getAlimentsRows());
+        Log.d("debug", "Data directory : " + Environment.getDataDirectory().toString());
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_aliments:changeFragment(new Fragment_aliments());
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void changeFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).commit();
-        Log.i("changeFormat", fragment.toString());
     }
 
     public SharedPreferencesManager getSharedPreferencesManager() {

@@ -1,6 +1,5 @@
 package com.example.olympe_dev_fragmentstyle;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;

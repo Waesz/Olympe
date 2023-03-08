@@ -57,7 +57,6 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             popup.show();
         }
 
-
         initViews();
         initCapteurs();
 

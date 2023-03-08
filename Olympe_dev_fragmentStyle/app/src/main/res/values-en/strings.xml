@@ -13,4 +13,24 @@
     <string name="menu_stats">Statistics</string>
     <string name="menu_entrainement">Training</string>
     <string name="menu_parametres">Parameters</string>
+    <string name="menu_aliments">Food</string>
+    <string name="stats_tableau_titre1">Exercice</string>
+    <string name="stats_tableau_titre2">Performance</string>
+    <string name="stats_tableau_titre3">Date</string>
+
+    <string name="aliment_pomme">Apple</string>
+    <string name="aliment_banane">Banana</string>
+    <string name="aliment_oeuf">Egg</string>
+    <string name="aliment_poivron">Pepper</string>
+    <string name="aliment_poulet_blanc">Chicken breast</string>
+    <string name="aliment_carotte">Carrot</string>
+    <string name="aliment_lentille">Lens</string>
+    <string name="aliment_avocat">Avocado</string>
+    <string name="aliment_poisson_cabillaud">Cod fish</string>
+    <string name="aliment_brocoli">Broccoli</string>
+
+    <string name="aliments_calories">Calories : </string>
+    <string name="aliments_proteines">Proteins : </string>
+    <string name="aliments_glucides">Carbs : </string>
+    <string name="aliments_lipides">Lipids : </string>
 </resources>

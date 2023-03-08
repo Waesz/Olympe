@@ -13,4 +13,24 @@
     <string name="menu_stats">Statistiques</string>
     <string name="menu_entrainement">Entraînement</string>
     <string name="menu_parametres">Paramètres</string>
+    <string name="menu_aliments">Aliments</string>
+    <string name="stats_tableau_titre1">Exercice</string>
+    <string name="stats_tableau_titre2">Performance</string>
+    <string name="stats_tableau_titre3">Date</string>
+
+    <string name="aliment_pomme">Pomme</string>
+    <string name="aliment_banane">Banane</string>
+    <string name="aliment_oeuf">Oeuf</string>
+    <string name="aliment_poivron">Poivron</string>
+    <string name="aliment_poulet_blanc">Blanc de poulet</string>
+    <string name="aliment_carotte">Carotte</string>
+    <string name="aliment_lentille">Lentille</string>
+    <string name="aliment_avocat">Avocat</string>
+    <string name="aliment_poisson_cabillaud">Cabillaud</string>
+    <string name="aliment_brocoli">Brocoli</string>
+
+    <string name="aliments_calories">Calories : </string>
+    <string name="aliments_proteines">Protéines : </string>
+    <string name="aliments_glucides">Glucides : </string>
+    <string name="aliments_lipides">Lipides : </string>
 </resources>

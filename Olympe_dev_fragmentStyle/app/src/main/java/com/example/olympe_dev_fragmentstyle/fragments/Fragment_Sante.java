@@ -1,4 +1,4 @@
-package com.example.olympe_dev_fragmentstyle;
+package com.example.olympe_dev_fragmentstyle.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,6 +18,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.olympe_dev_fragmentstyle.MainActivity;
+import com.example.olympe_dev_fragmentstyle.R;
+
 public class Fragment_Sante extends Fragment implements SensorEventListener {
     //******************* - Constantes - **************
     private static final float CALORIES_PAR_PAS = 0.035f;
@@ -32,10 +35,9 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
     private boolean capteurPasDisponible;
 
     //**************** - Donnees - ********************
-    private int nombrePas; // à mettre dans une BDD
+    private int nombrePas;
     private float distance;
     private float calories;
-
 
     private MainActivity activity;
     private View rootView;
@@ -44,21 +46,10 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_sante, container, false);
         activity = (MainActivity) getActivity();
-        if(!activity.sharedPreferencesManager.isCompleted()) {
-            AlertDialog.Builder popup = new AlertDialog.Builder(getContext());
-            popup.setTitle("Informations requises");
-            popup.setMessage("Veuillez entrer vos informations santé dans l'onglet profil");
-            popup.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    activity.changeFragment(new Fragment_profil());
-                }
-            });
-            popup.show();
-        }
-
         initViews();
         initCapteurs();
+
+
 
         return rootView;
     }
@@ -72,9 +63,13 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             calories = nombrePas*CALORIES_PAR_PAS;
 
             //************ - Update les Views - ***************
-            nombrePasTV.setText(String.valueOf(nombrePas) + " pas");
+            nombrePasTV.setText(String.valueOf(nombrePas) + " " + R.string.metrique_pas);
             distanceTV.setText(String.valueOf(distance/1000) + " km");
-            caloriesTV.setText(String.valueOf(calories) + " kcal");
+            if(activity.getSharedPreferencesManager().isCompleted()) {
+                caloriesTitle.setText(R.string.sante_calories);
+                caloriesTV.setText(String.valueOf(calories) + " kcal");
+            }
+
         }
     }
 
@@ -107,6 +102,19 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
         nombrePasTV = rootView.findViewById(R.id.sante_nombrePasTV);
         distanceTV = rootView.findViewById(R.id.sante_distanceTV);
         caloriesTV = rootView.findViewById(R.id.sante_caloriesTV);
+        if(capteurPasDisponible) {
+            if(!activity.getSharedPreferencesManager().isCompleted()) {
+                caloriesTitle.setText(R.string.sante_calories_indisponible);
+                caloriesTV.setVisibility(View.GONE);
+            }
+        } else {
+            nombrePasTitle.setText("Capteur de pas non disponible");
+            nombrePasTV.setVisibility(View.GONE);
+            distanceTitle.setVisibility(View.GONE);
+            distanceTV.setVisibility(View.GONE);
+            caloriesTitle.setVisibility(View.GONE);
+            caloriesTV.setVisibility(View.GONE);
+        }
 
     }
 
@@ -117,7 +125,6 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             capteurPas = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             capteurPasDisponible = true;
         } else {
-            nombrePasTitle.setText("Capteur de pas non disponible");
             capteurPasDisponible = false;
         }
 

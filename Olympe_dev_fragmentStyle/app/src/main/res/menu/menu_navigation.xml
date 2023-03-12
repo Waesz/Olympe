@@ -9,8 +9,8 @@
         android:icon="@drawable/ic_accueil"
         android:title="@string/menu_sante"/>
     <item
-        android:id="@+id/menu_stats"
-        android:icon="@drawable/ic_stats"
+        android:id="@+id/menu_performances"
+        android:icon="@drawable/ic_performances"
         android:title="@string/menu_stats"/>
     <item
         android:id="@+id/menu_entrainement"

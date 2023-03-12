@@ -1,4 +1,4 @@
-package com.example.olympe_dev_fragmentstyle;
+package com.example.olympe_dev_fragmentstyle.fragments;
 
 import android.os.Bundle;
 
@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.olympe_dev_fragmentstyle.R;
 
-public class Fragment_entrainement extends Fragment {
+public class Fragment_parametres extends Fragment {
     View rootView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_entrainement, container, false);
+        rootView = inflater.inflate(R.layout.fragment_parametres, container, false);
+        rootView = rootView;
         return rootView;
     }
 }

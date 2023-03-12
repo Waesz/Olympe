@@ -22,9 +22,9 @@
     <string name="aliments_glucides">Glucides : </string>
     <string name="aliments_lipides">Lipides : </string>
 
-    <string name="stats_tableau_titre1">Exercice</string>
-    <string name="stats_tableau_titre2">Performance</string>
-    <string name="stats_tableau_titre3">Date</string>
+    <string name="performances_tableau_titre1">Exercice</string>
+    <string name="performances_tableau_titre2">Performance</string>
+    <string name="performances_tableau_titre3">Date</string>
 
     <string name="aliment_pomme">Pomme</string>
     <string name="aliment_banane">Banane</string>
@@ -36,4 +36,12 @@
     <string name="aliment_avocat">Avocat</string>
     <string name="aliment_poisson_cabillaud">Cabillaud</string>
     <string name="aliment_brocoli">Brocoli</string>
+
+    <string name="sante_nombrePas">Nombre de pas aujourd\'hui :</string>
+    <string name="sante_nombrePas_indisponible">Capteur de pas non disponible</string>
+    <string name="metrique_pas">pas</string>
+    <string name="sante_distance">Distance parcouru :</string>
+    <string name="metrique_distance">km</string>
+    <string name="sante_calories">Calories dépensées :</string>
+    <string name="sante_calories_indisponible">Vous devez remplir votre profil afin de pouvoir calculer votre dépense calorique.</string>
 </resources>

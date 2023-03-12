@@ -14,9 +14,9 @@
     <string name="menu_entrainement">Training</string>
     <string name="menu_parametres">Parameters</string>
     <string name="menu_aliments">Food</string>
-    <string name="stats_tableau_titre1">Exercice</string>
-    <string name="stats_tableau_titre2">Performance</string>
-    <string name="stats_tableau_titre3">Date</string>
+    <string name="performances_tableau_titre1">Exercice</string>
+    <string name="performances_tableau_titre2">Performance</string>
+    <string name="performances_tableau_titre3">Date</string>
 
     <string name="aliment_pomme">Apple</string>
     <string name="aliment_banane">Banana</string>
@@ -33,4 +33,13 @@
     <string name="aliments_proteines">Proteins : </string>
     <string name="aliments_glucides">Carbs : </string>
     <string name="aliments_lipides">Lipids : </string>
+
+
+    <string name="sante_nombrePas">Number of steps today :</string>
+    <string name="sante_nombrePas_indisponible">Steps sensor not available</string>
+    <string name="metrique_pas">steps</string>
+    <string name="sante_distance">Distance traveled :</string>
+    <string name="metrique_distance">km</string>
+    <string name="sante_calories">Calories burned :</string>
+    <string name="sante_calories_indisponible">You must fill up your profil in order to get your caloric expenditure.</string>
 </resources>

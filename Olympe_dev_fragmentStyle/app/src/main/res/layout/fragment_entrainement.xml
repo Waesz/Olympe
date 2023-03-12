@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_entrainement">
+    tools:context=".fragments.Fragment_entrainement">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/menu_entrainement"
         android:textSize="40dp"/>
+
+
 
 </LinearLayout>

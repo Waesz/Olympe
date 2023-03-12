@@ -1,11 +1,10 @@
-package com.example.olympe_dev_fragmentstyle;
+package com.example.olympe_dev_fragmentstyle.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.olympe_dev_fragmentstyle.MainActivity;
+import com.example.olympe_dev_fragmentstyle.R;
 
 public class Fragment_profil extends Fragment {
     MainActivity activity;

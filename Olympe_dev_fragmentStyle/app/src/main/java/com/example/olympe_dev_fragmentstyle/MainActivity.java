@@ -1,8 +1,6 @@
 package com.example.olympe_dev_fragmentstyle;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -10,6 +8,12 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.example.olympe_dev_fragmentstyle.database.DatabaseManager;
+import com.example.olympe_dev_fragmentstyle.fragments.Fragment_Sante;
+import com.example.olympe_dev_fragmentstyle.fragments.Fragment_aliments;
+import com.example.olympe_dev_fragmentstyle.fragments.Fragment_entrainement;
+import com.example.olympe_dev_fragmentstyle.fragments.Fragment_parametres;
+import com.example.olympe_dev_fragmentstyle.fragments.Fragment_performances;
+import com.example.olympe_dev_fragmentstyle.sharedPreferences.SharedPreferencesManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferencesManager = new SharedPreferencesManager(this);
         databaseManager = new DatabaseManager(this);
         databaseManager.clearTableAlim();
+        databaseManager.clearTablePerf();
         databaseManager.fillDatas(databaseManager.getWritableDatabase());
-        Log.d("debug", "number of rows : " + databaseManager.getAlimentsRows());
+        Log.d("debug", "number of aliments rows : " + databaseManager.getAlimentsRows());
+        Log.d("debug", "number of perfs rows : " + databaseManager.getPerfsRows());
         Log.d("debug", "Data directory : " + Environment.getDataDirectory().toString());
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.menu_sante:changeFragment(new Fragment_Sante());
                     break;
-                case R.id.menu_stats:changeFragment(new Fragment_Stats());
+                case R.id.menu_performances:changeFragment(new Fragment_performances());
                     break;
                 case R.id.menu_entrainement:changeFragment(new Fragment_entrainement());
                     break;
@@ -47,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected void changeFragment(Fragment fragment) {
+    public void changeFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragmentLayout, fragment).commit();
     }
 
     public SharedPreferencesManager getSharedPreferencesManager() {
         return sharedPreferencesManager;
+    }
+    public DatabaseManager getDatabaseManager() {
+        return databaseManager;
     }
 }

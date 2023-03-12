@@ -3,22 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Fragment_entrainement"
+    tools:context=".fragments.Fragment_performances"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/aliments_titre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_aliments"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textSize="20dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/aliments_recyclerView"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:text="@string/menu_stats"
+        android:textSize="40dp"/>
+
+    <Spinner
+        android:id="@+id/performances_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TableLayout
+        android:id="@+id/performances_tableLayout"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+    </TableLayout>
+
 
 </LinearLayout>

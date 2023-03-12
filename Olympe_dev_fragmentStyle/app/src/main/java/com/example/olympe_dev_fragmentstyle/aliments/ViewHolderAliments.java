@@ -1,4 +1,4 @@
-package com.example.olympe_dev_fragmentstyle.utils;
+package com.example.olympe_dev_fragmentstyle.aliments;
 
 import android.view.View;
 import android.widget.ImageView;

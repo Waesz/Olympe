@@ -1,11 +1,7 @@
-package com.example.olympe_dev_fragmentstyle.utils;
+package com.example.olympe_dev_fragmentstyle.aliments;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;

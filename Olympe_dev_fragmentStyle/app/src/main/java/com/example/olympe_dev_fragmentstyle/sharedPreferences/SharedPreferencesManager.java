@@ -1,4 +1,4 @@
-package com.example.olympe_dev_fragmentstyle;
+package com.example.olympe_dev_fragmentstyle.sharedPreferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ public class SharedPreferencesManager {
     private Context context;
     private SharedPreferences sharedPreferences;
 
-    SharedPreferencesManager(Context context) {
+    public SharedPreferencesManager(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
     }

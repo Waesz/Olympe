@@ -4,11 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.CursorAdapter;
 
 import androidx.annotation.Nullable;
 
 import com.example.olympe_dev_fragmentstyle.R;
-import com.example.olympe_dev_fragmentstyle.utils.Aliment;
+import com.example.olympe_dev_fragmentstyle.aliments.Aliment;
+import com.example.olympe_dev_fragmentstyle.performances.Performance;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +54,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insertPerf(String nomPerf, int valeurPerf) {
+    public void insertPerf(SQLiteDatabase db, String nomPerf, int valeurPerf) {
 
         String insertPerfSQL =
                 "INSERT INTO performances (nomPerf, datePerf, valeurPerf) VALUES ('" +
@@ -92,6 +95,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         insertAlim(db, context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
         insertAlim(db, context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
         insertAlim(db, context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
+
+        insertPerf(db, "Développé couché", 105);
+        insertPerf(db, "Développé couché", 110);
+        insertPerf(db, "Développé couché", 115);
+        insertPerf(db, "Traction lestée", 50);
+        insertPerf(db, "Traction lestée", 60);
+        insertPerf(db, "Traction lestée", 70);
+        insertPerf(db, "Dip lestée", 70);
+        insertPerf(db, "Dip lestée", 80);
+        insertPerf(db, "Dip lestée", 90);
     }
 
     public List<Aliment> getAliments() {
@@ -111,6 +124,55 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public int getAlimentsRows() {
         Cursor mCount= getReadableDatabase().rawQuery("select count(*) from aliments", null);
+        mCount.moveToFirst();
+        int count= mCount.getInt(0);
+        mCount.close();
+        return count;
+    }
+
+    public List<Performance> getPerformances() {
+        List<Performance> performances = new ArrayList<>();
+        String sqlRequest = "SELECT * FROM performances";
+        Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Performance performance = new Performance(cursor.getString(1), cursor.getInt(2),
+                    cursor.getInt(3));
+            performances.add(performance);
+            cursor.moveToNext();
+        }
+        return  performances;
+    }
+
+    public List<Performance> getPerformances(String categorie) {
+        List<Performance> performances = new ArrayList<>();
+        String sqlRequest = "SELECT * FROM performances WHERE nomPerf = '" + categorie + "'";
+        Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Performance performance = new Performance(cursor.getString(1), cursor.getInt(2),
+                    cursor.getInt(3));
+            performances.add(performance);
+            cursor.moveToNext();
+        }
+        return  performances;
+    }
+
+    public List<String> getPerformanceCategories() {
+        List<String> categories = new ArrayList<>();
+        String sqlRequest = "SELECT DISTINCT nomPerf FROM performances ORDER BY nomPerf";
+        Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            String categorie = cursor.getString(0);
+            categories.add(categorie);
+            cursor.moveToNext();
+        }
+        return  categories;
+    }
+
+    public int getPerfsRows() {
+        Cursor mCount= getReadableDatabase().rawQuery("select count(*) from performances", null);
         mCount.moveToFirst();
         int count= mCount.getInt(0);
         mCount.close();

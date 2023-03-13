@@ -32,10 +32,7 @@ public class MainActivity extends AppCompatActivity {
         databaseManager = new DatabaseManager(this);
         databaseManager.clearTableAlim();
         databaseManager.clearTablePerf();
-        databaseManager.fillDatas(databaseManager.getWritableDatabase());
-        Log.d("debug", "number of aliments rows : " + databaseManager.getAlimentsRows());
-        Log.d("debug", "number of perfs rows : " + databaseManager.getPerfsRows());
-        Log.d("debug", "Data directory : " + Environment.getDataDirectory().toString());
+        databaseManager.fillDatas();
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_aliments:changeFragment(new Fragment_aliments());

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/entrainement_popup_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une catégorie :"/>
+
+    <EditText
+        android:id="@+id/entrainement_popup_editText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entrainement_popup_textView"/>
+
+    <Button
+        android:id="@+id/entrainement_popup_buttonValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entrainement_popup_editText"
+        android:text="@string/all_button_valider"/>
+
+    <Button
+        android:id="@+id/entrainement_popup_buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/entrainement_popup_editText"
+        android:layout_toEndOf="@id/entrainement_popup_buttonValider"
+        android:text="@string/all_button_retour"/>
+
+
+
+</RelativeLayout>

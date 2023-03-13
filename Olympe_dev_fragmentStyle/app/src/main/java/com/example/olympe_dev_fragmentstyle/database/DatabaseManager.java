@@ -47,24 +47,24 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PERF);
         db.execSQL(CREATE_TABLE_ALIM);
-        fillDatas(db);
+        fillDatas();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insertPerf(SQLiteDatabase db, String nomPerf, int valeurPerf) {
+    public void insertPerf(String nomPerf, int valeurPerf) {
 
         String insertPerfSQL =
                 "INSERT INTO performances (nomPerf, datePerf, valeurPerf) VALUES ('" +
                 nomPerf + "', " +
                 new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ", " +
                 valeurPerf + ")";
-        this.getWritableDatabase().execSQL(insertPerfSQL);
+        getWritableDatabase().execSQL(insertPerfSQL);
     }
 
-    public void insertAlim(SQLiteDatabase db, String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
+    public void insertAlim(String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
         String insertAlimSQL = "INSERT INTO aliments (nomAlim, image, calories, proteines, glucides, lipides) VALUES (" +
                 "'" + nomAlim + "', " +
                 image + ", " +
@@ -72,7 +72,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 proteines + ", " +
                 glucides + ", " +
                 lipides + ")";
-        db.execSQL(insertAlimSQL);
+        getWritableDatabase().execSQL(insertAlimSQL);
     }
 
     public void clearTablePerf() {
@@ -84,27 +84,27 @@ public class DatabaseManager extends SQLiteOpenHelper {
         getWritableDatabase().execSQL("DROP TABLE aliments");
         getWritableDatabase().execSQL(CREATE_TABLE_ALIM);
     }
-    public void fillDatas(SQLiteDatabase db) {
-        insertAlim(db, context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
-        insertAlim(db, context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
-        insertAlim(db, context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
-        insertAlim(db, context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
-        insertAlim(db, context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
+    public void fillDatas() {
+        insertAlim(context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
+        insertAlim(context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
+        insertAlim(context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
+        insertAlim(context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
+        insertAlim(context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
+        insertAlim(context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
+        insertAlim(context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
+        insertAlim(context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
+        insertAlim(context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
+        insertAlim(context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
 
-        insertPerf(db, "Développé couché", 105);
-        insertPerf(db, "Développé couché", 110);
-        insertPerf(db, "Développé couché", 115);
-        insertPerf(db, "Traction lestée", 50);
-        insertPerf(db, "Traction lestée", 60);
-        insertPerf(db, "Traction lestée", 70);
-        insertPerf(db, "Dip lestée", 70);
-        insertPerf(db, "Dip lestée", 80);
-        insertPerf(db, "Dip lestée", 90);
+        insertPerf("Développé couché", 105);
+        insertPerf("Développé couché", 110);
+        insertPerf("Développé couché", 115);
+        insertPerf("Traction lestée", 50);
+        insertPerf("Traction lestée", 60);
+        insertPerf("Traction lestée", 70);
+        insertPerf("Dip lestée", 70);
+        insertPerf("Dip lestée", 80);
+        insertPerf("Dip lestée", 90);
     }
 
     public List<Aliment> getAliments() {

@@ -113,7 +113,7 @@ public class Fragment_entrainement extends Fragment {
         }
 
         if(!isError) {
-            activity.getDatabaseManager().insertPerf(activity.getIdUser(), selectedCategorie, valeurPerf);
+            activity.getDatabaseManager().insertPerf(activity.getDatabaseManager().getWritableDatabase(),activity.getIdUser(), selectedCategorie, valeurPerf);
         }
     }
 

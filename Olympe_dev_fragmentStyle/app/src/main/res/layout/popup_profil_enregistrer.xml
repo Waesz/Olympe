@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:layout_margin="20dp"
         android:id="@+id/profil_popup_enregistrer_layoutIdentifiants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -26,12 +27,14 @@
             android:id="@+id/profil_popup_enregistrer_password1Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_popup_enregistrer_pseudoTitle"
             android:text="@string/profil_password1"/>
 
         <EditText
             android:id="@+id/profil_popup_enregistrer_password1"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_popup_enregistrer_pseudoTitle"
             android:layout_toEndOf="@id/profil_popup_enregistrer_password1Title"
             android:inputType="textPassword"/>
 

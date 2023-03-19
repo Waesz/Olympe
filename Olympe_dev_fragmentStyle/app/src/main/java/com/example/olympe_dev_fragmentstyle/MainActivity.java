@@ -12,6 +12,7 @@ import com.example.olympe_dev_fragmentstyle.fragments.Fragment_aliments;
 import com.example.olympe_dev_fragmentstyle.fragments.Fragment_entrainement;
 import com.example.olympe_dev_fragmentstyle.fragments.Fragment_profil;
 import com.example.olympe_dev_fragmentstyle.fragments.Fragment_performances;
+import com.example.olympe_dev_fragmentstyle.performances.Performance;
 import com.example.olympe_dev_fragmentstyle.sharedPreferences.SharedPreferencesManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,14 +35,8 @@ public class MainActivity extends AppCompatActivity {
         barreNavigation = findViewById(R.id.menu_barreNavigation);
         sharedPreferencesManager = new SharedPreferencesManager(this);
         databaseManager = new DatabaseManager(this);
-        databaseManager.clearTableAlim();
-        databaseManager.clearTablePerf();
-        databaseManager.fillDatas();
-        Log.d("debug", "perfs : " + databaseManager.getPerformances());
-        Log.d("debug", "'" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "', ");
-
-        Log.d("debug", "aliments : " + databaseManager.getAlimentsRows());
-        Log.d("debug", "aliments count : " + databaseManager.getAlimentsRowsCOUNT());
+        Performance performance = new Performance(1, "1", 1, 1);
+        Log.d("debug", "onCreate: " + performance);
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_aliments:changeFragment(new Fragment_aliments());
@@ -71,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean isConnected() {return isConnected;}
     public int getIdUser() {return idUser;}
-    public void setSession(int idUser) {
+    public void connect(int idUser) {
         this.idUser = idUser;
         this.isConnected = true;
     }

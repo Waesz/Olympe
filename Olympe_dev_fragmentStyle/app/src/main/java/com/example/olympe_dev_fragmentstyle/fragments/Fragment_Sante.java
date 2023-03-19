@@ -49,7 +49,7 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
         activity = (MainActivity) getActivity();
         initViews();
         initCapteurs();
-        //Log.d("debug", "number of users : " + activity.getDatabaseManager().getUserRows());
+        Log.d("debug", "number of users : " + activity.getDatabaseManager().getUserRows());
         Log.d("debug", "user : " + activity.getIdUser());
         return rootView;
     }

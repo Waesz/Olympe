@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.CursorAdapter;
 
 import androidx.annotation.Nullable;
 
@@ -19,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
+    SQLiteDatabase db;
     Context context;
     private static final String DATABASE_NAME = "database.db";
     private static final int DATABASE_VERSION = 1;
@@ -61,18 +61,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_TABLE_PERF);
         db.execSQL(CREATE_TABLE_ALIM);
         db.execSQL(CREATE_INFOS_TABLE);
-        db.execSQL(CREATE_USER_TABLE);
-        fillDatas();
+        fillDatas(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insertPerf(int idUser, String nomPerf, int valeurPerf) {
+    public void insertPerf(SQLiteDatabase db, int idUser, String nomPerf, int valeurPerf) {
 
         String insertPerfSQL =
                 "INSERT INTO performances (nomPerf, datePerf, valeurPerf, idUser) VALUES ('" +
@@ -80,11 +80,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 "'" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "', " +
                 valeurPerf + ", " +
                 idUser + ")";
-        getWritableDatabase().execSQL(insertPerfSQL);
+        db.execSQL(insertPerfSQL);
 
     }
 
-    public void insertAlim(String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
+    public void insertAlim(SQLiteDatabase db, String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
         String insertAlimSQL = "INSERT INTO aliments (nomAlim, image, calories, proteines, glucides, lipides) VALUES (" +
                 "'" + nomAlim + "', " +
                 image + ", " +
@@ -92,17 +92,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 proteines + ", " +
                 glucides + ", " +
                 lipides + ")";
-        getWritableDatabase().execSQL(insertAlimSQL);
+        db.execSQL(insertAlimSQL);
     }
-    public void insertUser(String pseudo, String password) {
+    public void insertUser(SQLiteDatabase db, String pseudo, String password) {
         String addUserSQL = "INSERT INTO users (pseudo, password) VALUES (" +
                 "'" + pseudo + "', " +
                 "'" + password + "')";
-        getWritableDatabase().execSQL(addUserSQL);
+        db.execSQL(addUserSQL);
 
     }
 
-    public void insertInfos(int taille, int poids, String sexe, int idUser) {
+    public void insertInfos(SQLiteDatabase db, int taille, int poids, String sexe, int idUser) {
+        Log.d("debug", "insertInfos avant: " + taille + ", " + poids + ", " + sexe + ", " + idUser);
         String addNewInfosSQL = "INSERT INTO infos (taille, poids, sexe, idUser) VALUES (" +
                 taille + ", " +
                 poids + ", " +
@@ -113,12 +114,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 "poids = " + poids + ", " +
                 "sexe = '" + sexe + "' " +
                 "WHERE idUser = " + idUser;
-        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM infos WHERE idUser = '" + idUser + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM infos WHERE idUser = '" + idUser + "'", null);
         if(cursor.getCount() == 0) {
-            getWritableDatabase().execSQL(addNewInfosSQL);
+            db.execSQL(addNewInfosSQL);
+            Log.d("debug", "New infos");
         } else {
-            getWritableDatabase().execSQL(updateInfosSQL);
+            db.execSQL(updateInfosSQL);
+            Log.d("debug", "Update infos : " + updateInfosSQL);
         }
+
     }
 
     public void clearTablePerf() {
@@ -130,33 +134,34 @@ public class DatabaseManager extends SQLiteOpenHelper {
         getWritableDatabase().execSQL("DROP TABLE aliments");
         getWritableDatabase().execSQL(CREATE_TABLE_ALIM);
     }
-    public void fillDatas() {
-        insertAlim(context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
-        insertAlim(context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
-        insertAlim(context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
-        insertAlim(context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
-        insertAlim(context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
-        insertAlim(context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
-        insertAlim(context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
-        insertAlim(context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
-        insertAlim(context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
-        insertAlim(context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
+    public void fillDatas(SQLiteDatabase db) {
 
-        insertPerf(1,"Développé couché", 105);
-        insertPerf(1,"Développé couché", 110);
-        insertPerf(1,"Développé couché", 115);
-        insertPerf(1,"Traction lestée", 50);
-        insertPerf(1,"Traction lestée", 60);
-        insertPerf(1,"Traction lestée", 70);
-        insertPerf(2,"Dip lestée", 70);
-        insertPerf(2,"Dip lestée", 80);
-        insertPerf(2,"Dip lestée", 90);
+        insertAlim(db,context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
+        insertAlim(db,context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
+        insertAlim(db,context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
+        insertAlim(db,context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
 
-        insertUser("Marc", "123");
-        insertUser("Wassim", "456");
+        insertPerf(db, 1,"Développé couché", 105);
+        insertPerf(db,1,"Développé couché", 110);
+        insertPerf(db,1,"Développé couché", 115);
+        insertPerf(db,1,"Traction lestée", 50);
+        insertPerf(db,1,"Traction lestée", 60);
+        insertPerf(db,1,"Traction lestée", 70);
+        insertPerf(db,2,"Dip lestée", 70);
+        insertPerf(db,2,"Dip lestée", 80);
+        insertPerf(db,2,"Dip lestée", 90);
 
-        insertInfos(175, 70, "Homme", 1);
-        insertInfos(175, 80, "Homme", 2);
+        insertUser(db,"Marc", "123");
+        insertUser(db,"Wassim", "456");
+
+        insertInfos(db,175, 70, "Homme", 1);
+        insertInfos(db,175, 80, "Homme", 2);
     }
 
     public List<Aliment> getAliments() {
@@ -188,12 +193,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            Performance performance = new Performance(cursor.getInt(4), cursor.getString(1), cursor.getInt(2),
-                    cursor.getInt(3));
+            Performance performance = new Performance(1,"nom", 2,3);
             performances.add(performance);
             cursor.moveToNext();
         }
-        return  performances;
+        return performances;
     }
 
     public List<Performance> getPerformances(int idUser, String categorie) {
@@ -245,7 +249,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void updatePseudo(String pseudo, int idUser) {
         String pseudoTrim = pseudo.trim();
         String updatePseudoSQL = "UPDATE users " +
-                "SET pseudo = '" + pseudoTrim + "', " +
+                "SET pseudo = '" + pseudoTrim + "' " +
                 "WHERE idUser = " + idUser;
         getWritableDatabase().execSQL(updatePseudoSQL);
     }
@@ -253,7 +257,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void updatePassword(String password, int idUser) {
         String passwordTrim = password.trim();
         String updatePasswordSQL = "UPDATE users " +
-                "SET password = '" + passwordTrim + "', " +
+                "SET password = '" + passwordTrim + "' " +
                 "WHERE idUser = " + idUser;
         getWritableDatabase().execSQL(updatePasswordSQL);
     }
@@ -277,5 +281,38 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String requete = "SELECT * FROM users";
         Cursor cursor = getReadableDatabase().rawQuery(requete, null);
         return (cursor.getCount());
+    }
+    public String getPseudo(int idUser) {
+        String selectUserSQL = "SELECT pseudo FROM users WHERE idUser = " + idUser;
+        Cursor cursor = getReadableDatabase().rawQuery(selectUserSQL, null);
+        cursor.moveToFirst();
+        String pseudo = cursor.getString(0);
+        cursor.close();
+        return pseudo;
+    }
+    public String getTaille(int idUser) {
+        String selectUserSQL = "SELECT taille FROM infos WHERE idUser = " + idUser;
+        Cursor cursor = getReadableDatabase().rawQuery(selectUserSQL, null);
+        cursor.moveToFirst();
+        String taille = cursor.getString(0);
+        cursor.close();
+        return taille;
+    }
+
+    public String getPoids(int idUser) {
+        String selectUserSQL = "SELECT poids FROM infos WHERE idUser = " + idUser;
+        Cursor cursor = getReadableDatabase().rawQuery(selectUserSQL, null);
+        cursor.moveToFirst();
+        String poids = cursor.getString(0);
+        cursor.close();
+        return poids;
+    }
+    public String getSexe(int idUser) {
+        String selectUserSQL = "SELECT sexe FROM infos WHERE idUser = " + idUser;
+        Cursor cursor = getReadableDatabase().rawQuery(selectUserSQL, null);
+        cursor.moveToFirst();
+        String sexe = cursor.getString(0);
+        cursor.close();
+        return sexe;
     }
 }

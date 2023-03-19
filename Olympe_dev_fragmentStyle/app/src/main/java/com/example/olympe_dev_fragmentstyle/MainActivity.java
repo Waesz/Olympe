@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        changeFragment(new Fragment_Sante());
+        changeFragment(new Fragment_aliments());
         barreNavigation = findViewById(R.id.menu_barreNavigation);
         sharedPreferencesManager = new SharedPreferencesManager(this);
         SharedPreferencesManager.setLocal(this, sharedPreferencesManager.getLangue());

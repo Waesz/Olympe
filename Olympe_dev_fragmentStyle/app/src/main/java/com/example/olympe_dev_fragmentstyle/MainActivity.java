@@ -31,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        changeFragment(new Fragment_aliments());
-        barreNavigation = findViewById(R.id.menu_barreNavigation);
         sharedPreferencesManager = new SharedPreferencesManager(this);
         SharedPreferencesManager.setLocal(this, sharedPreferencesManager.getLangue());
+        changeFragment(new Fragment_aliments());
+        barreNavigation = findViewById(R.id.menu_barreNavigation);
         databaseManager = new DatabaseManager(this);
-        Performance performance = new Performance(1, "1", 1, 1);
-        Log.d("debug", "onCreate: " + performance);
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_aliments:changeFragment(new Fragment_aliments());

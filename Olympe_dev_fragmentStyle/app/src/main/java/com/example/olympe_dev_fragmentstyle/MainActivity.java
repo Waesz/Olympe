@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferencesManager.setLocal(this, sharedPreferencesManager.getLangue());
         changeFragment(new Fragment_aliments());
         barreNavigation = findViewById(R.id.menu_barreNavigation);
+        deleteDatabase("database.db");
         databaseManager = new DatabaseManager(this);
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {

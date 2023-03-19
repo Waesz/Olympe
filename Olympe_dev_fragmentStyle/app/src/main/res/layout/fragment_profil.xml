@@ -186,7 +186,9 @@
         android:id="@+id/profil_layoutBoutonOFFLINE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profil_textViewLangueTitle">
+        android:layout_below="@+id/profil_textViewLangueTitle"
+        android:layout_margin="30dp"
+        android:layout_centerHorizontal="true">
 
         <!-- Bouton s'enregistrer -->
 
@@ -213,7 +215,9 @@
         android:id="@+id/profil_layoutBoutonONLINE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profil_textViewLangueTitle">
+        android:layout_below="@id/profil_textViewLangueTitle"
+        android:layout_margin="30dp"
+        android:layout_centerHorizontal="true">
 
         <!-- Bouton déconnexion -->
 

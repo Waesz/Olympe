@@ -26,14 +26,15 @@
             android:layout_height="wrap_content"
             android:text="Ajouter une performance :"
             android:textSize="25dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_margin="10dp"/>
 
         <Spinner
             android:id="@+id/entrainement_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/entrainement_textViewAjouterPerfTitre"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginLeft="30dp"/>
 
         <TextView
             android:id="@+id/entrainement_textViewErreurSpinner"
@@ -41,8 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/entrainement_spinner"
             android:visibility="gone"
-            android:textColor="#F00"
-            />
+            android:textColor="#F00"/>
 
         <TextView
             android:id="@+id/entrainement_textViewAjouterCategorie"
@@ -56,9 +56,10 @@
             android:id="@+id/entrainement_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="60dp"
+            android:minWidth="100dp"
             android:layout_below="@id/entrainement_textViewErreurSpinner"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/entrainement_textViewErreurEditText"
@@ -75,7 +76,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/entrainement_textViewErreurEditText"
-            android:text="@string/all_button_valider"/>
+            android:text="@string/all_button_valider"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"/>
 
     </RelativeLayout>
 

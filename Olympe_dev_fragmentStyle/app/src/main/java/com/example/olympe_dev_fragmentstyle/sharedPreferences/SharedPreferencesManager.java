@@ -12,7 +12,7 @@ import java.util.Locale;
 public class SharedPreferencesManager {
     protected static final String FILE_NAME = "shared_preferences";
     protected static final String KEY_LANGUE = "Langue";
-    protected static final String DEFAULT_LANGUE_VALUE = "Francais";
+    protected static final String DEFAULT_LANGUE_VALUE = "fr";
     private List<String> langues;
     private Context context;
     private SharedPreferences sharedPreferences;
@@ -20,8 +20,8 @@ public class SharedPreferencesManager {
     public SharedPreferencesManager(Context context) {
         this.context = context;
         langues = new ArrayList<>();
-        langues.add("Francais");
-        langues.add("Anglais");
+        langues.add("fr");
+        langues.add("en");
         sharedPreferences = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
     }
 

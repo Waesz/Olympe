@@ -114,6 +114,8 @@ public class Fragment_entrainement extends Fragment {
 
         if(!isError) {
             activity.getDatabaseManager().insertPerf(activity.getDatabaseManager().getWritableDatabase(),activity.getIdUser(), selectedCategorie, valeurPerf);
+            Toast.makeText(activity, getResources().getString(R.string.entrainement_performanceAjoutée), Toast.LENGTH_SHORT).show();
+            activity.changeFragment(new Fragment_performances());
         }
     }
 

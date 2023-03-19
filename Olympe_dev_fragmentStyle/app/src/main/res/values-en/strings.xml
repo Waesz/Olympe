@@ -72,4 +72,6 @@
     <string name="profil_connexionReussie">Login successful</string>
     <string name="profil_connexionRefusée">Wrong identifiers</string>
 
+    <string name="entrainement_performanceAjoutée">Performance added</string>
+
 </resources>

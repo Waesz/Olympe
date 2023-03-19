@@ -47,10 +47,8 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_sante, container, false);
         activity = (MainActivity) getActivity();
-        initViews();
         initCapteurs();
-        Log.d("debug", "number of users : " + activity.getDatabaseManager().getUserRows());
-        Log.d("debug", "user : " + activity.getIdUser());
+        initViews();
         return rootView;
     }
 

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         changeFragment(new Fragment_Sante());
         barreNavigation = findViewById(R.id.menu_barreNavigation);
         sharedPreferencesManager = new SharedPreferencesManager(this);
+        SharedPreferencesManager.setLocal(this, sharedPreferencesManager.getLangue());
         databaseManager = new DatabaseManager(this);
         Performance performance = new Performance(1, "1", 1, 1);
         Log.d("debug", "onCreate: " + performance);

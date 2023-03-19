@@ -4,72 +4,98 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:id="@+id/profil_popup_enregistrer_layoutIdentifiants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <!-- pseudo-->
-        <TextView
-            android:id="@+id/profil_popup_enregistrer_pseudoTitle"
+        <RelativeLayout
+            android:id="@+id/profil_popup_enregistrer_layoutPseudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profil_pseudo"/>
+            android:layout_centerHorizontal="true">
 
-        <EditText
-            android:id="@+id/profil_popup_enregistrer_pseudo"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/profil_popup_enregistrer_pseudoTitle" />
+            <!-- pseudo-->
+            <TextView
+                android:id="@+id/profil_popup_enregistrer_pseudoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/profil_pseudo"/>
 
-        <!-- password -->
-        <TextView
-            android:id="@+id/profil_popup_enregistrer_password1Title"
+            <EditText
+                android:id="@+id/profil_popup_enregistrer_pseudo"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/profil_popup_enregistrer_pseudoTitle" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:id="@+id/profil_popup_enregistrer_layoutPassword1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_popup_enregistrer_pseudoTitle"
-            android:text="@string/profil_password1"/>
+            android:layout_below="@+id/profil_popup_enregistrer_layoutPseudo">
 
-        <EditText
-            android:id="@+id/profil_popup_enregistrer_password1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_popup_enregistrer_pseudoTitle"
-            android:layout_toEndOf="@id/profil_popup_enregistrer_password1Title"
-            android:inputType="textPassword"/>
+            <!-- password -->
+            <TextView
+                android:id="@+id/profil_popup_enregistrer_password1Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/profil_password1"/>
 
-        <TextView
-            android:id="@+id/profil_popup_enregistrer_password1_erreur"
+            <EditText
+                android:id="@+id/profil_popup_enregistrer_password1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/profil_popup_enregistrer_password1Title"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/profil_popup_enregistrer_password1_erreur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profil_popup_enregistrer_password1Title"
+                android:visibility="gone"
+                android:textColor="#F00" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/profil_popup_enregistrer_layoutPassword2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_popup_enregistrer_password1Title"
-            android:visibility="gone"
-            android:textColor="#F00"
-            />
+            android:layout_below="@+id/profil_popup_enregistrer_layoutPassword1">
 
-        <TextView
-            android:id="@+id/profil_popup_enregistrer_password2Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_popup_enregistrer_password1_erreur"
-            android:text="@string/profil_password2"/>
+            <TextView
+                android:id="@+id/profil_popup_enregistrer_password2Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/profil_password2"/>
 
-        <EditText
-            android:id="@+id/profil_popup_enregistrer_password2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/profil_popup_enregistrer_password2Title"
-            android:layout_below="@+id/profil_popup_enregistrer_password1_erreur"
-            android:inputType="textPassword"/>
+            <EditText
+                android:id="@+id/profil_popup_enregistrer_password2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/profil_popup_enregistrer_password2Title"
+                android:inputType="textPassword"/>
 
-        <TextView
-            android:id="@+id/profil_popup_enregistrer_password2_erreur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profil_popup_enregistrer_password2Title"
-            android:visibility="gone"
-            android:textColor="#F00"
-            />
+            <TextView
+                android:id="@+id/profil_popup_enregistrer_password2_erreur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profil_popup_enregistrer_password2Title"
+                android:visibility="gone"
+                android:textColor="#F00"
+                />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

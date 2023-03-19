@@ -7,7 +7,8 @@
         android:id="@+id/profil_off_layoutInfos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp">
+        android:layout_margin="30dp"
+        android:layout_centerHorizontal="true">
 
         <!-- Langue -->
 
@@ -39,25 +40,31 @@
 
     </RelativeLayout>
 
-    <!-- Bouton s'enregistrer -->
-
-    <Button
-        android:id="@+id/profil_off_buttonInscription"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profil_off_layoutInfos"
-        android:layout_margin="10dp"
-        android:text="@string/profil_inscription"/>
+        android:layout_centerHorizontal="true">
 
-    <!-- Bouton connexion -->
+        <!-- Bouton s'enregistrer -->
 
-    <Button
-        android:id="@+id/profil_off_buttonConnexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profil_off_layoutInfos"
-        android:layout_toEndOf="@id/profil_off_buttonInscription"
-        android:layout_margin="10dp"
-        android:text="@string/profil_connecter"/>
+        <Button
+            android:id="@+id/profil_off_buttonInscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/profil_inscription"/>
+
+        <!-- Bouton connexion -->
+
+        <Button
+            android:id="@+id/profil_off_buttonConnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/profil_off_buttonInscription"
+            android:layout_margin="10dp"
+            android:text="@string/profil_connecter"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

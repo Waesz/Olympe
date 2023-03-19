@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="30dp">
 
-    <TextView
-        android:id="@+id/profil_popup_langue_textViewLangue"
+    <RelativeLayout
+        android:id="@+id/profil_popup_langue_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/profil_langue"/>
+        android:layout_centerHorizontal="true">
 
-    <Spinner
-        android:id="@+id/profil_popup_langue_spinner"
+        <TextView
+            android:id="@+id/profil_popup_langue_textViewLangue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/profil_langue"/>
+
+        <Spinner
+            android:id="@+id/profil_popup_langue_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/profil_popup_langue_textViewLangue"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/profil_popup_langue_layout"
+        android:id="@+id/profil_popup_langue_layoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_toEndOf="@id/profil_popup_langue_textViewLangue"/>
+        android:layout_centerHorizontal="true">
 
-    <Button
-        android:id="@+id/profil_popup_langue_buttonValider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profil_popup_langue_textViewLangue"
-        android:text="@string/all_button_valider"/>
+        <Button
+            android:id="@+id/profil_popup_langue_buttonValider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_button_valider"/>
 
-    <Button
-        android:id="@+id/profil_popup_langue_buttonRetour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@id/profil_popup_langue_textViewLangue"
-        android:layout_toEndOf="@id/profil_popup_langue_buttonValider"
-        android:text="@string/all_button_retour"/>
+        <Button
+            android:id="@+id/profil_popup_langue_buttonRetour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/profil_popup_langue_buttonValider"
+            android:text="@string/all_button_retour"/>
+
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

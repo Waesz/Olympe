@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="30dp">
 
-    <TextView
-        android:id="@+id/profil_popup_pseudo_textView"
+    <RelativeLayout
+        android:id="@+id/profil_popup_pseudo_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/profil_pseudo"/>
+        android:layout_centerHorizontal="true">
 
-    <EditText
-        android:id="@+id/profil_popup_pseudo_editText"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/profil_popup_pseudo_textView" />
+        <TextView
+            android:id="@+id/profil_popup_pseudo_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/profil_pseudo"/>
 
-    <Button
-        android:id="@+id/profil_popup_pseudo_buttonValider"
+        <EditText
+            android:id="@+id/profil_popup_pseudo_editText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/profil_popup_pseudo_textView" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profil_popup_pseudo_textView"
-        android:text="@string/all_button_valider"/>
+        android:layout_below="@+id/profil_popup_pseudo_layout"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
 
-    <Button
-        android:id="@+id/profil_popup_pseudo_buttonRetour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@id/profil_popup_pseudo_textView"
-        android:layout_toEndOf="@id/profil_popup_pseudo_buttonValider"
-        android:text="@string/all_button_retour"/>
+        <Button
+            android:id="@+id/profil_popup_pseudo_buttonValider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_button_valider"/>
+
+        <Button
+            android:id="@+id/profil_popup_pseudo_buttonRetour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/profil_popup_pseudo_buttonValider"
+            android:text="@string/all_button_retour"/>
+
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

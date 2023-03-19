@@ -61,7 +61,7 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             calories = nombrePas*CALORIES_PAR_PAS;
 
             //************ - Update les Views - ***************
-            nombrePasTV.setText(String.valueOf(nombrePas) + " " + R.string.metrique_pas);
+            nombrePasTV.setText(String.valueOf(nombrePas) );
             distanceTV.setText(String.valueOf(distance/1000) + " km");
             if(activity.isConnected()) {
                 caloriesTitle.setText(R.string.sante_calories);

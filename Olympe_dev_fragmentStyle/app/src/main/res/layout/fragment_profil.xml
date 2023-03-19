@@ -1,147 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    tools:context=".fragments.Fragment_profil">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Informations personnelles -->
+
+    <RelativeLayout
+        android:id="@+id/profil_layoutInfos"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="25dp">
 
         <TextView
-            android:id="@+id/profil_tailleTV"
+            android:id="@+id/profil_textViewTailleTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:text="@string/profil_taille"
-            android:textSize="25dp"
-            />
-
-        <NumberPicker
-            android:id="@+id/profil_tailleNP"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:text="@string/infos_taille"
+            android:layout_margin="2dp"/>
 
         <TextView
+            android:id="@+id/profil_textViewTaille"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cm"
-            android:textSize="20dp"/>
+            android:layout_toEndOf="@+id/profil_textViewTailleTitle"
+            android:text="175"
+            android:layout_margin="2dp"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/profil_textViewPoidsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_textViewTailleTitle"
+            android:text="@string/infos_poids"
+            android:layout_margin="2dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/profil_textViewPoids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_textViewTailleTitle"
+            android:layout_toEndOf="@+id/profil_textViewPoidsTitle"
+            android:text="75"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/profil_textViewSexeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_textViewPoidsTitle"
+            android:text="@string/infos_sexe"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/profil_textViewSexe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_textViewPoidsTitle"
+            android:layout_toEndOf="@+id/profil_textViewSexeTitle"
+            android:text="@string/infos_homme"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/profil_textViewChangerInfos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profil_textViewSexeTitle"
+            android:text="@string/profil_changer_infos"
+            android:layout_marginLeft="2dp"
+            android:textColor="#00F"
+            android:background="?attr/selectableItemBackground"/>
+
+
+    </RelativeLayout>
+
+
+<RelativeLayout
+    android:id="@+id/profil_layoutIdentifiants"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/profil_layoutInfos">
+
+    <!-- Pseudo -->
+    <TextView
+        android:id="@+id/profil_textViewPseudoTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:text="@string/profil_pseudo"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
-        <TextView
-            android:id="@+id/profil_poidsTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:text="@string/profil_poids"
-            android:textSize="25dp"
-            />
-
-        <NumberPicker
-            android:id="@+id/profil_poidsNP"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kg"
-            android:textSize="20dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/profil_textViewPseudo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_toEndOf="@+id/profil_textViewPseudoTitle"
+        android:text="Marc"
+        android:layout_margin="2dp"/>
 
-        <TextView
-            android:id="@+id/profil_sexeTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:text="@string/profil_sexe"
-            android:textSize="25dp"
-            />
-
-        <RadioGroup
-            android:id="@+id/profil_sexeRG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:checkedButton="@id/profil_sexeRB_H">
-
-            <RadioButton
-                android:id="@+id/profil_sexeRB_H"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/profil_homme"/>
-
-            <RadioButton
-                android:id="@+id/profil_sexeRB_F"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/profil_femme"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/profil_textViewChangerPseudo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_toEndOf="@+id/profil_textViewPseudo"
+        android:text="@string/profil_changer_pseudo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:textColor="#00F"
+        android:background="?attr/selectableItemBackground"/>
+
+    <!-- Password -->
+
+    <TextView
+        android:id="@+id/profil_textViewPasswordTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_textViewPseudoTitle"
+        android:text="@string/profil_password"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="25dp"/>
+
+    <TextView
+        android:id="@+id/profil_textViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_textViewPseudoTitle"
+        android:layout_toEndOf="@+id/profil_textViewPasswordTitle"
+        android:text="123455"
+        android:inputType="textPassword"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/profil_textViewChangerPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_textViewPseudoTitle"
+        android:layout_toEndOf="@+id/profil_textViewPassword"
+        android:text="@string/profil_changer_password"
+        android:layout_marginLeft="20dp"
+        android:textColor="#00F"
+        android:background="?attr/selectableItemBackground"/>
+
+
+</RelativeLayout>
+
+    <!-- Langue -->
+
+    <TextView
+        android:id="@+id/profil_textViewLangueTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_layoutIdentifiants"
+        android:text="@string/profil_langue"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:id="@+id/profil_textViewLangue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profil_layoutIdentifiants"
+        android:layout_toEndOf="@+id/profil_textViewLangueTitle"
+        android:text="Francais"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/profil_textViewChangerLangue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/profil_textViewLangue"
+        android:layout_below="@+id/profil_layoutIdentifiants"
+        android:text="@string/profil_changerLangue"
+        android:layout_marginLeft="20dp"
+        android:textColor="#00F"
+        android:background="?attr/selectableItemBackground"/>
+
+    <RelativeLayout
+        android:id="@+id/profil_layoutBoutonOFFLINE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_textViewLangueTitle">
+
+        <!-- Bouton s'enregistrer -->
 
         <Button
-            android:id="@+id/profil_validerB"
+            android:id="@+id/profil_buttonInscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/all_button_valider"
-            />
+            android:layout_margin="10dp"
+            android:text="@string/profil_inscription"/>
+
+        <!-- Bouton connexion -->
 
         <Button
-            android:id="@+id/profil_retourB"
+            android:id="@+id/profil_buttonConnexion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/all_button_retour"
-            />
+            android:layout_toEndOf="@id/profil_buttonInscription"
+            android:layout_margin="10dp"
+            android:text="@string/profil_connecter"/>
 
+    </RelativeLayout>
 
-    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/profil_layoutBoutonONLINE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profil_textViewLangueTitle">
 
-</LinearLayout>
+        <!-- Bouton déconnexion -->
+
+        <Button
+            android:id="@+id/profil_buttonDeconnexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/profil_deconnecter"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

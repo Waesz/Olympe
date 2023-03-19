@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/profil_off_layoutInfos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <!-- Langue -->
+
+        <TextView
+            android:id="@+id/profil_on_textViewLangueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profil_langue"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/profil_on_textViewLangue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/profil_on_textViewLangueTitle"
+            android:text="Francais"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/profil_on_textViewChangerLangue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/profil_on_textViewLangue"
+            android:text="@string/profil_changerLangue"
+            android:layout_marginLeft="20dp"
+            android:textColor="#00F"/>
+
+    </RelativeLayout>
+
+    <!-- Bouton s'enregistrer -->
+
+    <Button
+        android:id="@+id/profil_off_buttonInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_off_layoutInfos"
+        android:layout_margin="10dp"
+        android:text="@string/profil_inscription"/>
+
+    <!-- Bouton connexion -->
+
+    <Button
+        android:id="@+id/profil_off_buttonConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_off_layoutInfos"
+        android:layout_toEndOf="@id/profil_off_buttonInscription"
+        android:layout_margin="10dp"
+        android:text="@string/profil_connecter"/>
+
+</RelativeLayout>

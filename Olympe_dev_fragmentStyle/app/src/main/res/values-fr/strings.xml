@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Olympe</string>
-    <string name="profil_taille">Taille :</string>
-    <string name="profil_poids">Poids :</string>
-    <string name="profil_sexe">Sexe :</string>
-    <string name="profil_homme">Homme</string>
-    <string name="profil_femme">Femme</string>
+
+    <string name="infos_taille">Taille :</string>
+    <string name="infos_poids">Poids :</string>
+    <string name="infos_sexe">Sexe :</string>
+    <string name="infos_homme">Homme</string>
+    <string name="infos_femme">Femme</string>
+
     <string name="all_button_valider">Valider</string>
     <string name="all_button_retour">Retour</string>
     <string name="all_erreurSaisie">Erreur de saisie. Veuillez remplir correctement les champs.</string>
+    <string name="all_messageConnexion">Vous devez vous connecter à votre profil pour utiliser cette fonctionnalité.</string>
+    <string name="all_langueFrancais">Français</string>
+    <string name="all_langueAnglais">Anglais</string>
+
     <string name="menu_sante">Santé</string>
-    <string name="menu_stats">Statistiques</string>
+    <string name="menu_performances">Performances</string>
     <string name="menu_entrainement">Entraînement</string>
-    <string name="menu_parametres">Paramètres</string>
+    <string name="menu_profil">Profil</string>
     <string name="menu_aliments">Aliments</string>
     <string name="performances_tableau_titre1">Exercice</string>
     <string name="performances_tableau_titre2">Performance</string>
@@ -41,5 +47,29 @@
     <string name="sante_distance">Distance parcouru :</string>
     <string name="metrique_distance">km</string>
     <string name="sante_calories">Calories dépensées :</string>
-    <string name="sante_calories_indisponible">Vous devez remplir votre profil afin de pouvoir calculer votre dépense calorique.</string>
+    <string name="sante_calories_indisponible">Vous devez vous connecter à votre profil afin de pouvoir calculer votre dépense calorique.</string>
+
+    <string name="profil_langue">Langue :</string>
+    <string name="profil_profil">Profil :</string>
+    <string name="profil_inscription">S\'enregistrer</string>
+    <string name="profil_connecter">Connexion</string>
+    <string name="profil_deconnecter">Déconnexion</string>
+    <string name="profil_changerLangue">Modifier la langue</string>
+    <string name="profil_pseudo">Pseudo :</string>
+    <string name="profil_changer_pseudo">Modifier le pseudo</string>
+    <string name="profil_password">Mot de passe :</string>
+    <string name="profil_changer_password">Modifier le mot de passe</string>
+    <string name="profil_changer_infos">Modifier les informations</string>
+    <string name="profil_infosModifiees">Informations modifiées</string>
+    <string name="profil_pseudoUtilise">Le pseudo est déjà utilisé.</string>
+    <string name="profil_pseudoModifie">Pseudo modifié</string>
+    <string name="profil_password1">Entrez un mot de passe :</string>
+    <string name="profil_password2">Retapez le mot de passe :</string>
+    <string name="profil_erreurPasswordEgaux">Les mots de passe doivent être identiques</string>
+    <string name="profil_passwordModifie">Password modifié</string>
+    <string name="profil_inscriptionReussie">Inscription réussie</string>
+    <string name="profil_seConnecter">Se connecter</string>
+    <string name="profil_connexionReussie">Connexion réussie</string>
+    <string name="profil_connexionRefusée">Mauvais identifiants</string>
+
 </resources>

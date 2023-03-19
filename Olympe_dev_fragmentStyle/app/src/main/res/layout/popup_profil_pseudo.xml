@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/profil_popup_pseudo_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profil_pseudo"/>
+
+    <EditText
+        android:id="@+id/profil_popup_pseudo_editText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/profil_popup_pseudo_textView" />
+
+    <Button
+        android:id="@+id/profil_popup_pseudo_buttonValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profil_popup_pseudo_textView"
+        android:text="@string/all_button_valider"/>
+
+    <Button
+        android:id="@+id/profil_popup_pseudo_buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/profil_popup_pseudo_textView"
+        android:layout_toEndOf="@id/profil_popup_pseudo_buttonValider"
+        android:text="@string/all_button_retour"/>
+
+</RelativeLayout>

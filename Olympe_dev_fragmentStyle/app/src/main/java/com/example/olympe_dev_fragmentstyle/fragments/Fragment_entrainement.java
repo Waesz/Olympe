@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +24,13 @@ import com.example.olympe_dev_fragmentstyle.MainActivity;
 import com.example.olympe_dev_fragmentstyle.R;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Fragment_entrainement extends Fragment {
-    private TextView textView_AjouterCategorie, textView_ErreurSpinner, textView_ErreurEditText;
+    private RelativeLayout layout;
+    private TextView messageConnexion, textView_AjouterCategorie, textView_ErreurSpinner, textView_ErreurEditText;
     private Spinner spinner_Categories;
     private EditText editText_ValeurPerf;
     private Button button_Valider;
@@ -45,13 +48,33 @@ public class Fragment_entrainement extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_entrainement, container, false);
         activity = (MainActivity) getActivity();
 
+        messageConnexion = rootView.findViewById(R.id.entrainement_textViewConnexion);
+        layout = rootView.findViewById(R.id.entrainement_layout);
+
+        if(activity.isConnected()) {
+            messageConnexion.setVisibility(View.GONE);
+            layout.setVisibility(View.VISIBLE);
+            initViews();
+        } else {
+            messageConnexion.setVisibility(View.VISIBLE);
+            layout.setVisibility(View.GONE);
+        }
+
+        return rootView;
+    }
+
+    private void initViews() {
         textView_AjouterCategorie = rootView.findViewById(R.id.entrainement_textViewAjouterCategorie);
         spinner_Categories = rootView.findViewById(R.id.entrainement_spinner);
         editText_ValeurPerf = rootView.findViewById(R.id.entrainement_editText);
         button_Valider = rootView.findViewById(R.id.entrainement_button_valider);
         textView_ErreurSpinner = rootView.findViewById(R.id.entrainement_textViewErreurSpinner);
         textView_ErreurEditText = rootView.findViewById(R.id.entrainement_textViewErreurEditText);
-        categories = activity.getDatabaseManager().getPerformanceCategories();
+        categories = new ArrayList<>();
+        categories.addAll(activity.getDatabaseManager().getPerformanceCategories(activity.getIdUser()));
+        if(categories.isEmpty()) {
+            categories.add("Entrer une catégorie");
+        }
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, categories);
@@ -65,15 +88,13 @@ public class Fragment_entrainement extends Fragment {
         textView_AjouterCategorie.setOnClickListener(v -> {
             onAjouterCategorie();
         });
-
-        return rootView;
     }
 
     private void onValidateClick() {
         isError = false;
         String selectedCategorie = null;
         int valeurPerf = 0;
-        if(spinner_Categories.getSelectedItem() != null) {
+        if(spinner_Categories.getSelectedItem() != null && spinner_Categories.getSelectedItem() != "Entrer une catégorie") {
             selectedCategorie = spinner_Categories.getSelectedItem().toString();
         } else {
             textView_ErreurSpinner.setVisibility(View.VISIBLE);
@@ -92,7 +113,7 @@ public class Fragment_entrainement extends Fragment {
         }
 
         if(!isError) {
-            activity.getDatabaseManager().insertPerf(selectedCategorie, valeurPerf);
+            activity.getDatabaseManager().insertPerf(activity.getIdUser(), selectedCategorie, valeurPerf);
         }
     }
 
@@ -111,6 +132,8 @@ public class Fragment_entrainement extends Fragment {
             categories.add(ajout);
             spinner_Categories.setSelection(categories.indexOf(ajout));
             alertDialog.dismiss();
+            Log.d("debug", "categories : " + categories);
+            Log.d("debug", "spinner categories : " + spinner_Categories.getSelectedItem().toString());
         });
 
         button_popup_retour.setOnClickListener(v -> {

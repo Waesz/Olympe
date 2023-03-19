@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,9 +49,8 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
         activity = (MainActivity) getActivity();
         initViews();
         initCapteurs();
-
-
-
+        //Log.d("debug", "number of users : " + activity.getDatabaseManager().getUserRows());
+        Log.d("debug", "user : " + activity.getIdUser());
         return rootView;
     }
 
@@ -65,7 +65,7 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             //************ - Update les Views - ***************
             nombrePasTV.setText(String.valueOf(nombrePas) + " " + R.string.metrique_pas);
             distanceTV.setText(String.valueOf(distance/1000) + " km");
-            if(activity.getSharedPreferencesManager().isCompleted()) {
+            if(activity.isConnected()) {
                 caloriesTitle.setText(R.string.sante_calories);
                 caloriesTV.setText(String.valueOf(calories) + " kcal");
             }
@@ -103,7 +103,7 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
         distanceTV = rootView.findViewById(R.id.sante_distanceTV);
         caloriesTV = rootView.findViewById(R.id.sante_caloriesTV);
         if(capteurPasDisponible) {
-            if(!activity.getSharedPreferencesManager().isCompleted()) {
+            if(!activity.isConnected()) {
                 caloriesTitle.setText(R.string.sante_calories_indisponible);
                 caloriesTV.setVisibility(View.GONE);
             }

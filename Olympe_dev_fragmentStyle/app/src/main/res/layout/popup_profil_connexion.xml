@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Pseudo -->
+    <TextView
+        android:id="@+id/profil_popup_connexion_pseudoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profil_pseudo"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
+
+    <EditText
+        android:id="@+id/profil_popup_connexion_pseudo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/profil_popup_connexion_pseudoTitle"
+        android:layout_margin="2dp"/>
+
+    <!-- Password -->
+
+    <TextView
+        android:id="@+id/profil_popup_connexion_passwordTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_popup_connexion_pseudoTitle"
+        android:text="@string/profil_password"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="25dp"/>
+
+    <EditText
+        android:id="@+id/profil_popup_connexion_password"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_popup_connexion_pseudoTitle"
+        android:layout_toEndOf="@+id/profil_popup_connexion_passwordTitle"
+        android:inputType="textPassword"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/profil_popup_connexion_erreur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profil_popup_connexion_passwordTitle"
+        android:visibility="gone"
+        android:textColor="#F00"
+        />
+
+    <Button
+        android:id="@+id/profil_popup_connexion_buttonValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profil_popup_connexion_passwordTitle"
+        android:text="@string/profil_seConnecter"/>
+
+    <Button
+        android:id="@+id/profil_popup_connexion_buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/profil_popup_connexion_passwordTitle"
+        android:layout_toEndOf="@id/profil_popup_connexion_buttonValider"
+        android:text="@string/all_button_retour"/>
+
+</RelativeLayout>

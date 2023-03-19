@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -22,6 +23,8 @@ import com.example.olympe_dev_fragmentstyle.performances.Performance;
 import java.util.List;
 
 public class Fragment_performances extends Fragment {
+    RelativeLayout layout;
+    TextView messageConnexion;
     List<String> categories;
     Spinner spinner;
     TableLayout tableLayout;
@@ -33,25 +36,38 @@ public class Fragment_performances extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_performances, container, false);
         activity = (MainActivity) getActivity();
+        messageConnexion = rootView.findViewById(R.id.performances_textViewConnexion);
+        layout = rootView.findViewById(R.id.performances_layout);
+
+        if(activity.isConnected()) {
+            messageConnexion.setVisibility(View.GONE);
+            layout.setVisibility(View.VISIBLE);
+            initViews();
+        } else {
+            messageConnexion.setVisibility(View.VISIBLE);
+            layout.setVisibility(View.GONE);
+        }
+
+        return rootView;
+    }
+
+    private void initViews() {
+        // Création du tableau de performances
         tableLayout = rootView.findViewById(R.id.performances_tableLayout);
-
         headerRow = new TableRow(activity);
-
         TextView exercice = new TextView(activity);
         exercice.setText(R.string.performances_tableau_titre1);
         headerRow.addView(exercice);
-
         TextView valeur = new TextView(activity);
         valeur.setText(R.string.performances_tableau_titre2);
         headerRow.addView(valeur);
-
         TextView date = new TextView(activity);
         date.setText(R.string.performances_tableau_titre3);
         headerRow.addView(date);
-
         tableLayout.addView(headerRow);
 
-        categories = activity.getDatabaseManager().getPerformanceCategories();
+        // Création du spinner des catégories
+        categories = activity.getDatabaseManager().getPerformanceCategories(activity.getIdUser());
         spinner = rootView.findViewById(R.id.performances_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -62,30 +78,24 @@ public class Fragment_performances extends Fragment {
                 tableLayout.removeAllViews();
                 tableLayout.addView(headerRow);
                 String selectedCategorie = spinner.getSelectedItem().toString();
-                List<Performance> performanceList = activity.getDatabaseManager().getPerformances(selectedCategorie);
+                List<Performance> performanceList = activity.getDatabaseManager().getPerformances(activity.getIdUser(), selectedCategorie);
                 for(Performance performance : performanceList) {
                     TableRow row = new TableRow(activity);
-
                     TextView exercice = new TextView(activity);
                     exercice.setText(performance.getNomPerf());
                     row.addView(exercice);
-
                     TextView valeur = new TextView(activity);
                     valeur.setText(String.valueOf(performance.getValeurPerf()));
                     row.addView(valeur);
-
                     TextView date = new TextView(activity);
                     date.setText(String.valueOf(performance.getDatePerf()));
                     row.addView(date);
-
                     tableLayout.addView(row);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        return rootView;
     }
 }

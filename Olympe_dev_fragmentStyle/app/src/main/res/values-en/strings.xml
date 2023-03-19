@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Olympe</string>
-    <string name="profil_taille">Height :</string>
-    <string name="profil_poids">Weight :</string>
-    <string name="profil_sexe">Gender :</string>
-    <string name="profil_homme">Man</string>
-    <string name="profil_femme">Woman</string>
+
+    <string name="infos_taille">Height :</string>
+    <string name="infos_poids">Weight :</string>
+    <string name="infos_sexe">Gender :</string>
+    <string name="infos_homme">Man</string>
+    <string name="infos_femme">Woman</string>
+
     <string name="all_button_valider">Validate</string>
     <string name="all_button_retour">Back</string>
     <string name="all_erreurSaisie">Incorrect entry. Please, fill in the form correctly.</string>
+    <string name="all_messageConnexion">You must login to your profile in order to use this functionality.</string>
+    <string name="all_langueFrancais">French</string>
+    <string name="all_langueAnglais">English</string>
+
     <string name="menu_sante">Health</string>
-    <string name="menu_stats">Statistics</string>
+    <string name="menu_performances">Performances</string>
     <string name="menu_entrainement">Training</string>
-    <string name="menu_parametres">Parameters</string>
+    <string name="menu_profil">Profile</string>
     <string name="menu_aliments">Food</string>
     <string name="performances_tableau_titre1">Exercice</string>
     <string name="performances_tableau_titre2">Performance</string>
@@ -41,5 +47,29 @@
     <string name="sante_distance">Distance traveled :</string>
     <string name="metrique_distance">km</string>
     <string name="sante_calories">Calories burned :</string>
-    <string name="sante_calories_indisponible">You must fill up your profil in order to get your caloric expenditure.</string>
+    <string name="sante_calories_indisponible">You must login to your profile in order to get your caloric expenditure.</string>
+
+    <string name="profil_langue">Language :</string>
+    <string name="profil_profil">Profile :</string>
+    <string name="profil_inscription">Register</string>
+    <string name="profil_connecter">Login</string>
+    <string name="profil_deconnecter">Logout</string>
+    <string name="profil_changerLangue">Change language</string>
+    <string name="profil_pseudo">Pseudo :</string>
+    <string name="profil_changer_pseudo">Change pseudo</string>
+    <string name="profil_password">Password :</string>
+    <string name="profil_changer_password">Change password</string>
+    <string name="profil_changer_infos">Change information</string>
+    <string name="profil_infosModifiees">Details modified</string>
+    <string name="profil_pseudoUtilise">The pseudo is already used.</string>
+    <string name="profil_pseudoModifie">Pseudo updated</string>
+    <string name="profil_password1">Choose a password :</string>
+    <string name="profil_password2">Enter the password again :</string>
+    <string name="profil_erreurPasswordEgaux">The passwords must be the same</string>
+    <string name="profil_passwordModifie">Password updated</string>
+    <string name="profil_inscriptionReussie">Register successful</string>
+    <string name="profil_seConnecter">Connect</string>
+    <string name="profil_connexionReussie">Login successful</string>
+    <string name="profil_connexionRefusée">Wrong identifiers</string>
+
 </resources>

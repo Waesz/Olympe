@@ -11,13 +11,13 @@
     <item
         android:id="@+id/menu_performances"
         android:icon="@drawable/ic_performances"
-        android:title="@string/menu_stats"/>
+        android:title="@string/menu_performances"/>
     <item
         android:id="@+id/menu_entrainement"
         android:icon="@drawable/ic_entrainement"
         android:title="@string/menu_entrainement"/>
     <item
-        android:id="@+id/menu_parametres"
-        android:icon="@drawable/ic_parametres"
-        android:title="@string/menu_parametres"/>
+        android:id="@+id/menu_profil"
+        android:icon="@drawable/ic_profil"
+        android:title="@string/menu_profil"/>
 </menu>

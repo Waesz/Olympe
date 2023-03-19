@@ -5,60 +5,75 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/entrainement_textViewAjouterPerfTitre"
+        android:id="@+id/entrainement_textViewConnexion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ajouter une performance :"
-        android:textSize="25dp"/>
+        android:text="@string/all_messageConnexion"
+        android:textSize="20dp"
+        android:layout_margin="10dp"
+        android:textAlignment="center"
+        android:gravity="center"/>
 
-    <Spinner
-        android:id="@+id/entrainement_spinner"
+    <RelativeLayout
+        android:id="@+id/entrainement_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entrainement_textViewAjouterPerfTitre"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/entrainement_textViewErreurSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/entrainement_spinner"
-        android:visibility="gone"
-        android:textColor="#F00"
-        />
+        <TextView
+            android:id="@+id/entrainement_textViewAjouterPerfTitre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajouter une performance :"
+            android:textSize="25dp"/>
 
-    <TextView
-        android:id="@+id/entrainement_textViewAjouterCategorie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entrainement_textViewAjouterPerfTitre"
-        android:layout_toEndOf="@id/entrainement_spinner"
-        android:text="Ajouter une catégorie"/>
+        <Spinner
+            android:id="@+id/entrainement_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entrainement_textViewAjouterPerfTitre"/>
 
-    <EditText
-        android:id="@+id/entrainement_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="60dp"
-        android:layout_below="@id/entrainement_textViewErreurSpinner"
-        android:inputType="number"/>
+        <TextView
+            android:id="@+id/entrainement_textViewErreurSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/entrainement_spinner"
+            android:visibility="gone"
+            android:textColor="#F00"
+            />
 
-    <TextView
-        android:id="@+id/entrainement_textViewErreurEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/entrainement_editText"
-        android:visibility="gone"
-        android:textColor="#F00"
-        />
+        <TextView
+            android:id="@+id/entrainement_textViewAjouterCategorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entrainement_textViewAjouterPerfTitre"
+            android:layout_toEndOf="@id/entrainement_spinner"
+            android:text="Ajouter une catégorie"/>
+
+        <EditText
+            android:id="@+id/entrainement_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="60dp"
+            android:layout_below="@id/entrainement_textViewErreurSpinner"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/entrainement_textViewErreurEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/entrainement_editText"
+            android:visibility="gone"
+            android:textColor="#F00"
+            />
 
 
-    <Button
-        android:id="@+id/entrainement_button_valider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entrainement_textViewErreurEditText"
-        android:text="@string/all_button_valider"/>
+        <Button
+            android:id="@+id/entrainement_button_valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entrainement_textViewErreurEditText"
+            android:text="@string/all_button_valider"/>
 
-
+    </RelativeLayout>
 
 </RelativeLayout>

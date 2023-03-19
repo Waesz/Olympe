@@ -22,12 +22,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "database.db";
     private static final int DATABASE_VERSION = 1;
+
+    private static final String CREATE_USER_TABLE =
+            "CREATE TABLE users (" +
+                    "idUser INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "pseudo TEXT NOT NULL," +
+                    "password TEXT NOT NULL)";
+    private static final String CREATE_INFOS_TABLE =
+            "CREATE TABLE infos (" +
+                    "idInfo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "taille INTEGER," +
+                    "poids INTEGER," +
+                    "sexe TEXT," +
+                    "idUser INTEGER NOT NULL," +
+                    "FOREIGN KEY(idUser) REFERENCES users(idUser))";
     private static final String CREATE_TABLE_PERF =
             "CREATE TABLE performances (" +
                     "idPerf INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "nomPerf TEXT NOT NULL," +
                     "datePerf DATE NOT NULL," +
-                    "valeurPerf INTEGER NOT NULL)";
+                    "valeurPerf INTEGER NOT NULL," +
+                    "idUser INTEGER NOT NULL," +
+                    "FOREIGN KEY(idUser) REFERENCES users(idUser))";
     static final String CREATE_TABLE_ALIM =
             "CREATE TABLE aliments (" +
                     "idAlim INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -47,6 +63,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PERF);
         db.execSQL(CREATE_TABLE_ALIM);
+        db.execSQL(CREATE_INFOS_TABLE);
+        db.execSQL(CREATE_USER_TABLE);
         fillDatas();
     }
 
@@ -54,14 +72,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insertPerf(String nomPerf, int valeurPerf) {
+    public void insertPerf(int idUser, String nomPerf, int valeurPerf) {
 
         String insertPerfSQL =
-                "INSERT INTO performances (nomPerf, datePerf, valeurPerf) VALUES ('" +
+                "INSERT INTO performances (nomPerf, datePerf, valeurPerf, idUser) VALUES ('" +
                 nomPerf + "', " +
-                new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ", " +
-                valeurPerf + ")";
+                "'" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "', " +
+                valeurPerf + ", " +
+                idUser + ")";
         getWritableDatabase().execSQL(insertPerfSQL);
+
     }
 
     public void insertAlim(String nomAlim, int image, int calories, float proteines, float glucides, float lipides) {
@@ -73,6 +93,32 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 glucides + ", " +
                 lipides + ")";
         getWritableDatabase().execSQL(insertAlimSQL);
+    }
+    public void insertUser(String pseudo, String password) {
+        String addUserSQL = "INSERT INTO users (pseudo, password) VALUES (" +
+                "'" + pseudo + "', " +
+                "'" + password + "')";
+        getWritableDatabase().execSQL(addUserSQL);
+
+    }
+
+    public void insertInfos(int taille, int poids, String sexe, int idUser) {
+        String addNewInfosSQL = "INSERT INTO infos (taille, poids, sexe, idUser) VALUES (" +
+                taille + ", " +
+                poids + ", " +
+                "'" + sexe + "', " +
+                idUser + ")";
+        String updateInfosSQL = "UPDATE infos " +
+                "SET taille = " + taille + ", " +
+                "poids = " + poids + ", " +
+                "sexe = '" + sexe + "' " +
+                "WHERE idUser = " + idUser;
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM infos WHERE idUser = '" + idUser + "'", null);
+        if(cursor.getCount() == 0) {
+            getWritableDatabase().execSQL(addNewInfosSQL);
+        } else {
+            getWritableDatabase().execSQL(updateInfosSQL);
+        }
     }
 
     public void clearTablePerf() {
@@ -96,15 +142,21 @@ public class DatabaseManager extends SQLiteOpenHelper {
         insertAlim(context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
         insertAlim(context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
 
-        insertPerf("Développé couché", 105);
-        insertPerf("Développé couché", 110);
-        insertPerf("Développé couché", 115);
-        insertPerf("Traction lestée", 50);
-        insertPerf("Traction lestée", 60);
-        insertPerf("Traction lestée", 70);
-        insertPerf("Dip lestée", 70);
-        insertPerf("Dip lestée", 80);
-        insertPerf("Dip lestée", 90);
+        insertPerf(1,"Développé couché", 105);
+        insertPerf(1,"Développé couché", 110);
+        insertPerf(1,"Développé couché", 115);
+        insertPerf(1,"Traction lestée", 50);
+        insertPerf(1,"Traction lestée", 60);
+        insertPerf(1,"Traction lestée", 70);
+        insertPerf(2,"Dip lestée", 70);
+        insertPerf(2,"Dip lestée", 80);
+        insertPerf(2,"Dip lestée", 90);
+
+        insertUser("Marc", "123");
+        insertUser("Wassim", "456");
+
+        insertInfos(175, 70, "Homme", 1);
+        insertInfos(175, 80, "Homme", 2);
     }
 
     public List<Aliment> getAliments() {
@@ -136,7 +188,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            Performance performance = new Performance(cursor.getString(1), cursor.getInt(2),
+            Performance performance = new Performance(cursor.getInt(4), cursor.getString(1), cursor.getInt(2),
                     cursor.getInt(3));
             performances.add(performance);
             cursor.moveToNext();
@@ -144,13 +196,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return  performances;
     }
 
-    public List<Performance> getPerformances(String categorie) {
+    public List<Performance> getPerformances(int idUser, String categorie) {
         List<Performance> performances = new ArrayList<>();
-        String sqlRequest = "SELECT * FROM performances WHERE nomPerf = '" + categorie + "'";
+        String sqlRequest = "SELECT * FROM performances WHERE nomPerf = '" + categorie + "' AND idUser = " + idUser;
         Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
-            Performance performance = new Performance(cursor.getString(1), cursor.getInt(2),
+            Performance performance = new Performance(cursor.getInt(4), cursor.getString(1), cursor.getInt(2),
                     cursor.getInt(3));
             performances.add(performance);
             cursor.moveToNext();
@@ -158,9 +210,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return  performances;
     }
 
-    public List<String> getPerformanceCategories() {
+    public List<String> getPerformanceCategories(int idUser) {
         List<String> categories = new ArrayList<>();
-        String sqlRequest = "SELECT DISTINCT nomPerf FROM performances ORDER BY nomPerf";
+        String sqlRequest = "SELECT DISTINCT nomPerf FROM performances WHERE idUser = " + idUser + " ORDER BY nomPerf";
         Cursor cursor = getReadableDatabase().rawQuery(sqlRequest, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
@@ -177,5 +229,53 @@ public class DatabaseManager extends SQLiteOpenHelper {
         int count= mCount.getInt(0);
         mCount.close();
         return count;
+    }
+
+    public int getAlimentsRowsCOUNT() {
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM aliments", null);
+        return cursor.getCount();
+    }
+
+    public boolean isPseudoAlreadyUsed(String pseudo) {
+        String pseudoTrim = pseudo.trim();
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM users WHERE pseudo = '" + pseudoTrim + "'", null);
+        return (cursor.getCount() != 0);
+    }
+
+    public void updatePseudo(String pseudo, int idUser) {
+        String pseudoTrim = pseudo.trim();
+        String updatePseudoSQL = "UPDATE users " +
+                "SET pseudo = '" + pseudoTrim + "', " +
+                "WHERE idUser = " + idUser;
+        getWritableDatabase().execSQL(updatePseudoSQL);
+    }
+
+    public void updatePassword(String password, int idUser) {
+        String passwordTrim = password.trim();
+        String updatePasswordSQL = "UPDATE users " +
+                "SET password = '" + passwordTrim + "', " +
+                "WHERE idUser = " + idUser;
+        getWritableDatabase().execSQL(updatePasswordSQL);
+    }
+    public boolean loginOK(String pseudo, String password) {
+        String isLoginMatchSQL = "SELECT * FROM users WHERE pseudo = '" + pseudo + "' " +
+                "AND password = '" + password + "'";
+
+        Cursor cursor = getReadableDatabase().rawQuery(isLoginMatchSQL, null);
+        return (cursor.getCount() != 0);
+    }
+
+    public int getUserID(String pseudo) {
+        String selectUserSQL = "SELECT idUser FROM users WHERE pseudo = '" + pseudo + "'";
+        Cursor cursor = getReadableDatabase().rawQuery(selectUserSQL, null);
+        cursor.moveToFirst();
+        int id = cursor.getInt(0);
+        cursor.close();
+        return id;
+    }
+    public int getUserRows() {
+        String requete = "SELECT * FROM users";
+        Cursor cursor = getReadableDatabase().rawQuery(requete, null);
+        return (cursor.getCount());
     }
 }

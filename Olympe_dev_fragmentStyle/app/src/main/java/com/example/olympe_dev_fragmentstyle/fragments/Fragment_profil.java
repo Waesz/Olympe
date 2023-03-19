@@ -141,7 +141,7 @@ public class Fragment_profil extends Fragment {
                     break;
                 case 1 :
                     SharedPreferencesManager.setLocal(activity, "en");
-                    activity.getSharedPreferencesManager().setLangue("fr");
+                    activity.getSharedPreferencesManager().setLangue("en");
                     break;
             }
             alertDialog.dismiss();

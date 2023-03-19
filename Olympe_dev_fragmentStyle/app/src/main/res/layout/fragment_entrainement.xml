@@ -17,20 +17,23 @@
     <RelativeLayout
         android:id="@+id/entrainement_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
 
         <TextView
             android:id="@+id/entrainement_textViewAjouterPerfTitre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ajouter une performance :"
-            android:textSize="25dp"/>
+            android:textSize="25dp"
+            android:gravity="center"/>
 
         <Spinner
             android:id="@+id/entrainement_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/entrainement_textViewAjouterPerfTitre"/>
+            android:layout_below="@id/entrainement_textViewAjouterPerfTitre"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/entrainement_textViewErreurSpinner"

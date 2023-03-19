@@ -14,6 +14,11 @@
     <string name="all_messageConnexion">Vous devez vous connecter à votre profil pour utiliser cette fonctionnalité.</string>
     <string name="all_langueFrancais">Français</string>
     <string name="all_langueAnglais">Anglais</string>
+    <string name="all_permissionRequiseTitle">Permission requise</string>
+    <string name="all_permissionRequise">Cette permission est requise pour avoir accès au nombre de pas</string>
+    <string name="all_permissionAccordee">Permission autorisée</string>
+    <string name="all_permissionRefusee">Permission refusée</string>
+    <string name="all_capteurIndisponible">Capteur de pas non disponible</string>
 
     <string name="menu_sante">Santé</string>
     <string name="menu_performances">Performances</string>

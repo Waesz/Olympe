@@ -136,16 +136,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
     public void fillDatas(SQLiteDatabase db) {
 
-        insertAlim(db,context.getResources().getString(R.string.aliment_avocat), R.drawable.pomme, 160, (float) 2, (float) 8.5, (float) 14.66);
-        insertAlim(db,context.getResources().getString(R.string.aliment_banane), R.drawable.pomme, 94, (float) 1.2, (float) 20.5, (float) 0.2);
-        insertAlim(db,context.getResources().getString(R.string.aliment_brocoli), R.drawable.pomme, 29, (float) 2.1, (float) 2.8, (float) 0.5);
-        insertAlim(db,context.getResources().getString(R.string.aliment_carotte), R.drawable.pomme, 36, (float) 0.8, (float) 6.6, (float) 0.3);
-        insertAlim(db,context.getResources().getString(R.string.aliment_lentille), R.drawable.pomme, 353, (float) 25.8, (float) 60.1, (float) 0.2);
-        insertAlim(db,context.getResources().getString(R.string.aliment_oeuf), R.drawable.pomme, 145, (float) 12.3, (float) 0.7, (float) 10.3);
-        insertAlim(db,context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.pomme, 85, (float) 19, (float) 0, (float) 0.8);
-        insertAlim(db,context.getResources().getString(R.string.aliment_poivron), R.drawable.pomme, 20, (float) 0.9, (float) 4.6, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_avocat), R.drawable.avocat, 160, (float) 2, (float) 8.5, (float) 14.66);
+        insertAlim(db,context.getResources().getString(R.string.aliment_banane), R.drawable.banane, 94, (float) 1.2, (float) 20.5, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_brocoli), R.drawable.brocoli, 29, (float) 2.1, (float) 2.8, (float) 0.5);
+        insertAlim(db,context.getResources().getString(R.string.aliment_carotte), R.drawable.carrotte, 36, (float) 0.8, (float) 6.6, (float) 0.3);
+        insertAlim(db,context.getResources().getString(R.string.aliment_lentille), R.drawable.lentilles, 353, (float) 25.8, (float) 60.1, (float) 0.2);
+        insertAlim(db,context.getResources().getString(R.string.aliment_oeuf), R.drawable.oeuf, 145, (float) 12.3, (float) 0.7, (float) 10.3);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poisson_cabillaud), R.drawable.cabillaud, 85, (float) 19, (float) 0, (float) 0.8);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poivron), R.drawable.poivron, 20, (float) 0.9, (float) 4.6, (float) 0.2);
         insertAlim(db,context.getResources().getString(R.string.aliment_pomme), R.drawable.pomme, 53, (float) 0.3, (float) 11.3, (float) 0.2);
-        insertAlim(db,context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.pomme, 121, (float) 26.2, (float) 0, (float) 1.8);
+        insertAlim(db,context.getResources().getString(R.string.aliment_poulet_blanc), R.drawable.blancpoulet, 121, (float) 26.2, (float) 0, (float) 1.8);
 
         insertPerf(db, 1,"Développé couché", 105);
         insertPerf(db,1,"Développé couché", 110);

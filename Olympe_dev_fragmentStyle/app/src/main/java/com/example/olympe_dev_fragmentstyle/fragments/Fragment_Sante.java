@@ -1,8 +1,10 @@
 package com.example.olympe_dev_fragmentstyle.fragments;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,6 +13,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -47,6 +51,10 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_sante, container, false);
         activity = (MainActivity) getActivity();
+        if(!(ContextCompat.checkSelfPermission(activity, Manifest.permission.ACTIVITY_RECOGNITION)
+                == PackageManager.PERMISSION_GRANTED)){
+            permissionRequest();
+        }
         initCapteurs();
         initViews();
         return rootView;
@@ -106,7 +114,7 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
                 caloriesTV.setVisibility(View.GONE);
             }
         } else {
-            nombrePasTitle.setText("Capteur de pas non disponible");
+            nombrePasTitle.setText(getResources().getString(R.string.all_capteurIndisponible));
             nombrePasTV.setVisibility(View.GONE);
             distanceTitle.setVisibility(View.GONE);
             distanceTV.setVisibility(View.GONE);
@@ -126,5 +134,9 @@ public class Fragment_Sante extends Fragment implements SensorEventListener {
             capteurPasDisponible = false;
         }
 
+    }
+
+    private void permissionRequest() {
+        ActivityCompat.requestPermissions(activity, new String[] { Manifest.permission.ACTIVITY_RECOGNITION}, MainActivity.ACTIVITY_RECOGNITION_CODE );
     }
 }

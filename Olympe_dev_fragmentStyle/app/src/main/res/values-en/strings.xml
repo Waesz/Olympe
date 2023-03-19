@@ -14,6 +14,11 @@
     <string name="all_messageConnexion">You must login to your profile in order to use this functionality.</string>
     <string name="all_langueFrancais">French</string>
     <string name="all_langueAnglais">English</string>
+    <string name="all_permissionRequiseTitle">Permission needed</string>
+    <string name="all_permissionRequise">This permission is required to access the number of steps</string>
+    <string name="all_permissionAccordee">Permission granted</string>
+    <string name="all_permissionRefusee">Permission denied</string>
+    <string name="all_capteurIndisponible">Steps sensor unavailable</string>
 
     <string name="menu_sante">Health</string>
     <string name="menu_performances">Performances</string>

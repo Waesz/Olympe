@@ -1,10 +1,18 @@
 package com.example.olympe_dev_fragmentstyle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.olympe_dev_fragmentstyle.database.DatabaseManager;
 import com.example.olympe_dev_fragmentstyle.fragments.Fragment_Sante;
@@ -20,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int ACTIVITY_RECOGNITION_CODE  = 1;
     private int idUser = -1;
     private boolean isConnected = false;
 
@@ -35,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferencesManager.setLocal(this, sharedPreferencesManager.getLangue());
         changeFragment(new Fragment_aliments());
         barreNavigation = findViewById(R.id.menu_barreNavigation);
+        deleteDatabase("database.db");
         databaseManager = new DatabaseManager(this);
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -72,5 +82,16 @@ public class MainActivity extends AppCompatActivity {
     public void disconnect() {
         this.idUser = -1;
         this.isConnected = false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == ACTIVITY_RECOGNITION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, getResources().getString(R.string.all_permissionAccordee), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.all_permissionRefusee), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/sante_nombrePasTitle"
         android:gravity="center"
-        android:text="Nombre pas aujourd'hui : "
+        android:text="@string/sante_nombrePas"
         android:textSize="30dp"/>
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/sante_distanceTitle"
         android:gravity="center"
-        android:text="Distance parcouru :"
+        android:text="@string/sante_distance"
         android:textSize="30dp"/>
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/sante_caloriesTitle"
         android:gravity="center"
-        android:text="Calories dépensées :"
+        android:text="@string/sante_calories"
         android:textSize="30dp"/>
 
     <TextView

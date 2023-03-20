@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
         databaseManager = new DatabaseManager(this);
         barreNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.menu_aliments:changeFragment(new Fragment_aliments());
+                case R.id.menu_aliments:
+                    changeFragment(new Fragment_aliments());
+                    databaseManager.clearTableAlim();
+                    databaseManager.fillAliments(databaseManager.getWritableDatabase());
                     break;
                 case R.id.menu_sante:changeFragment(new Fragment_Sante());
                     break;

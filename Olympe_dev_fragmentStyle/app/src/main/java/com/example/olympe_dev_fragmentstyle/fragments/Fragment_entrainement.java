@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.olympe_dev_fragmentstyle.MainActivity;
 import com.example.olympe_dev_fragmentstyle.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -134,8 +135,6 @@ public class Fragment_entrainement extends Fragment {
             categories.add(ajout);
             spinner_Categories.setSelection(categories.indexOf(ajout));
             alertDialog.dismiss();
-            Log.d("debug", "categories : " + categories);
-            Log.d("debug", "spinner categories : " + spinner_Categories.getSelectedItem().toString());
         });
 
         button_popup_retour.setOnClickListener(v -> {
